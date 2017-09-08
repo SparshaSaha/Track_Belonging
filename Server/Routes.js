@@ -231,11 +231,24 @@ app.get("/showdevice",(req,res)=>{
 });
 
 
-app.get("/getjson",(req,res)=>{
+app.get("/machine_learning",(req,res)=>{
   var z=[];
-  z[0]="64:fb";
-  z[1]="64:fc";
-  res.send(z);
+  z.push(-2.0434 *Math.pow(10,-5));
+  z.push(-1.2300*Math.pow(10,-4));
+
+  theta1=req.query.t1;
+  theta2=req.query.t2;
+
+
+
+  m=z[0]*theta1+z[1]*theta2;
+  if(m>-0.0434)
+  res.json(1);
+  else {
+    res.json(0);
+  }
+
+
 });
 
 
