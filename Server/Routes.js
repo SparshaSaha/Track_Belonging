@@ -138,7 +138,7 @@ app.get("/login",(req,res)=>{
     if(resp.length==0)
     res.send("0");
     else
-    res.send("1");
+    res.send(JSON.stringify(resp[0]));
   });
 });
 
