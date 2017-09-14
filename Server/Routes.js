@@ -51,7 +51,7 @@ app.get("/adduser",(req,res)=>{
   }
 
   else {
-    console.log(err);
+    throw(err);
   }
   });
 
@@ -87,7 +87,7 @@ app.get("/addevice",(req,res)=>{
         }
 
         else{
-          res.send(err);
+          res.send("0");
         }
       });
 //Push device id to array
@@ -97,7 +97,7 @@ app.get("/addevice",(req,res)=>{
         if(!err)
         console.log("No error");
         else {
-          console.log(err);
+          throw(err);
         }
 
       });
@@ -113,22 +113,16 @@ app.get("/addevice",(req,res)=>{
 });
 
 app.get("/getdeviceinfo",(req,res)=>{
-  Device.find({device_id:req.query.id},(err,resp)=>{
+  Device.find({mac:req.query.id},(err,resp)=>{
     if(!err){
       console.log(resp[0]);
-      var k={
-        device_id:resp[0].device_id,
-        mac:resp[0].mac,
-        last_loc:{
+
+        var last_loc={
           lat:resp[0].last_loc.lat,
           lon:resp[0].last_loc.lon
-        },
-        user_id:resp[0].user_id,
-        lost:0
+        };
 
-      };
-
-      res.json(k);
+      res.json(last_loc);
     }
   });
 });
@@ -146,8 +140,11 @@ app.get("/login",(req,res)=>{
 app.get("/device_lost",(req,res)=>{
   Device.update({mac:req.query.mac},{$set:{lost:1}},(err,resp)=>{
     if(!err){
-      var location=JSON.parse(req.query.location);
-      Device.update({mac:req.query.mac},{$set:{last_loc:location}},(err,resp)=>{
+      var location={
+      lat:req.query.lat,
+      lon:req.query.lon
+    };
+            Device.update({mac:req.query.mac},{$set:{last_loc:location}},(err,resp)=>{
         if(!err)
         res.send("1");
         else {
@@ -173,6 +170,8 @@ app.get("/device_found",(req,res)=>{
     }
   });
 });
+
+
 var istracker=function(n,i,req,res,arr,x)
 {
 
