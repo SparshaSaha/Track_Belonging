@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:gravity="center"
+    tools:context="com.fourthstatelab.trackr.Activities.Signup">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:hint="Username"
+                    android:text="sid"
+                    android:id="@+id/tv_login_name"
+                    android:maxLines="1"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:hint="Email"
+                    android:text="sridharswain25@hotmail.com"
+                    android:id="@+id/tv_login_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:hint="Password"
+                        android:text="Sid25081998!"
+                        android:id="@+id/tv_login_password"
+                        android:inputType="textPassword"
+                        android:paddingEnd="40dp"
+                        android:maxLines="1"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/toggle_pass_View"
+                    android:src = "@drawable/ic_view_password"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:id="@+id/button_login"
+                android:background="@android:color/black"
+                android:text="Sign up"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
